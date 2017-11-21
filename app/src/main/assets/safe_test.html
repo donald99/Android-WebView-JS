@@ -1,0 +1,57 @@
+<html>
+<body>
+<script>
+    function getFileContent(){
+        var file = "file:///sdcard/test.txt";
+        var xmlHttpReq = new XMLHttpRequest();
+    
+	    xmlHttpReq.onreadystatechange = function(){
+	    	 if (xmlHttpReq.readyState == 4) { //4: 请求已完成，且响应已就绪
+	    	 	alert(xmlHttpReq.responseText);//执行上传到远程
+	    	 }
+	    }
+
+        xmlHttpReq.open("GET",file,true);
+        xmlHttpReq.send();
+    }
+
+   getFileContent();
+
+   function callAlert(){
+      alert("Android call html Alert function !");
+      return "这是需要返回的值";
+   }
+
+   function callAndroid(){
+       JavaScriptInject.callAndroid("javascript call android");
+   }
+
+   function callLoadProtocol(){
+       document.location = "http://www.360.cn?p=ppp&q=qqq";
+   }
+
+    function clickPrompt(){
+        prompt("   传递给Android的值");
+   }
+
+   function clickConfirm(){
+        confirm("   传递给Android的值");
+   }
+
+   function clickAlert(){
+        alert("   传递给Android的值");
+   }
+</script>
+
+<button type="button" id="button" onclick="callAndroid()">callAndroid</button>
+<br/><br/>
+<button type="button" id="button2" onclick="callLoadProtocol()">callLoadProtocol</button>
+<br/><br/>
+<button type="button" id="button3" onclick="clickPrompt()">点击调用Android onJsPrompt</button>
+<br/><br/>
+<button type="button" id="button4" onclick="clickConfirm()">点击调用Android onJsConfirm</button>
+<br/><br/>
+<button type="button" id="button5" onclick="clickAlert()">点击调用Android onJsAlert</button>
+
+</body>
+</html>
